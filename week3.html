@@ -47,18 +47,35 @@
             padding: 5px 10px;
             cursor: pointer;
         }
+
+        #loginBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0f0;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <!-- Login Popup -->
     <div class="login-popup" id="loginPopup">
         <div id="clock"></div>
         <h2 id="loginTitle"></h2>
         <input type="text" id="username" placeholder="Kullanıcı Adı"><br><br>
         <input type="password" id="password" placeholder="Şifre"><br><br>
-        <button>Giriş</button>
+        <button onclick="login()">Giriş</button>
     </div>
 
+    <!-- Login Button -->
+    <button id="loginBtn" onclick="openLoginPopup()">Giriş Yap</button>
+
     <script>
+        // Event listener for the "h" key to toggle the login popup
         document.addEventListener("keydown", function(event) {
             if (event.key === "h" || event.key === "H") {
                 let popup = document.getElementById("loginPopup");
@@ -75,6 +92,7 @@
             }
         });
 
+        // Function to simulate typing effect in text elements
         function typeText(elementId, text, delay) {
             let elem = document.getElementById(elementId);
             if (!elem) return;
@@ -91,6 +109,7 @@
             typing();
         }
 
+        // Function to update the clock in the login popup
         function updateClock() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
@@ -98,8 +117,36 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
         }
+
         setInterval(updateClock, 1000);
         updateClock();
+
+        // Function to open the login popup
+        function openLoginPopup() {
+            let popup = document.getElementById("loginPopup");
+            popup.style.display = "block";
+            typeText("loginTitle", "Giriş Yap", 50);
+            typeText("username", "Kullanıcı Adı", 100);
+            typeText("password", "Şifre", 150);
+            setTimeout(() => { popup.style.opacity = "1"; }, 100);
+        }
+
+        // Function to handle login action
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Default credentials
+            const correctUsername = "admin";
+            const correctPassword = "admin";
+
+            if (username === correctUsername && password === correctPassword) {
+                // Redirect to table.html if credentials are correct
+                window.location.href = "table.html";
+            } else {
+                alert("Geçersiz kullanıcı adı veya şifre.");
+            }
+        }
     </script>
 </body>
 </html>
