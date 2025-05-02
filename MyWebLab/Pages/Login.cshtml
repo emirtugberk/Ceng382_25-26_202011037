@@ -1,0 +1,110 @@
+@page
+@model Ceng382_25_26_202011037.Pages.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matrix Login</title>
+
+  <style>
+    /* Arka plan GIF'i */
+    body {
+      background-image: url('https://media.giphy.com/media/eIm624c8nnNbiG0V3g/giphy.gif');
+      background-size: cover;
+      margin: 0;
+      color: #0f0;
+      font-family: monospace;
+      overflow: hidden;
+    }
+
+    /* :target popup hack */
+    #login { display: none; }
+    #login:target {
+      display: block;
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.4);
+      padding: 30px; border: 1px solid rgba(0,255,0,0.5);
+      border-radius: 15px; text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Giriş Yap butonu */
+    #openLogin {
+      position: fixed; bottom: 10%; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,255,0,0.2);
+      border: 1px solid #0f0;
+      padding: 15px 30px; color: #0f0;
+      text-decoration: none; letter-spacing: 1px;
+    }
+    #openLogin:hover { background: rgba(0,255,0,0.4); color:black; }
+
+    /* CSS typing efekti sadece bir kere */
+    .typing {
+      overflow: hidden; white-space: nowrap;
+      border-right: .1em solid #0f0;
+      animation: 
+        @@keyframes typing { from { width: 0 } to { width: 9ch } }
+        typing 1.5s steps(9,end) forwards,
+        @@keyframes blink-caret { 50% { border-color: transparent } }
+        blink-caret .75s step-end infinite;
+    }
+
+    /* Form elemanları */
+    #login input {
+      display: block; width: 100%;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #0f0; color: #0f0;
+      padding: 10px; margin: 8px 0; border-radius: 5px;
+    }
+    #login button {
+      margin-top: 10px; padding: 10px 20px;
+      background: transparent; border:1px solid #0f0;
+      color: #0f0; cursor: pointer; border-radius: 8px;
+    }
+    #login button:hover { background: rgba(0,255,0,0.4); color:black; }
+
+    /* Saat stili (sayfa yüklendiğinde alınan sunucu zamanı) */
+    #clock {
+      margin-bottom: 15px; font-size:1.2em; letter-spacing:1px;
+    }
+    .text-danger { color:#f55; font-size: .9em; }
+  </style>
+</head>
+<body>
+
+  <!-- Popup’u açan link -->
+  <a href="#login" id="openLogin">GİRİŞ YAP</a>
+
+  <!-- Popup içerik -->
+  <div id="login">
+    <h2 class="typing">Giriş&nbsp;Yap</h2>
+
+    <!-- Sayfa ilk yüklendiğinde alınan zaman -->
+    <div id="clock">@DateTime.Now.ToString("HH:mm:ss")</div>
+
+    <form method="post" novalidate>
+      <input asp-for="Input.Username" placeholder="Kullanıcı Adı" />
+      <span asp-validation-for="Input.Username" class="text-danger"></span>
+
+      <input asp-for="Input.Password" type="password" placeholder="Şifre" />
+      <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+      <button type="submit">Gönder</button>
+
+      @if (Model.LoginFailed)
+      {
+        <div class="text-danger mt-2">
+          Kullanıcı adı veya şifre hatalı.
+        </div>
+      }
+    </form>
+  </div>
+
+</body>
+</html>

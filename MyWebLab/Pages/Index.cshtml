@@ -1,0 +1,104 @@
+﻿@page
+@model Ceng382_25_26_202011037.Pages.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Table</title>
+  <style>
+    body { background: #222; color: #0f0; font-family: monospace; }
+    table { width:80%; margin:auto; border-collapse:collapse; }
+    th, td { padding:10px; border:1px solid #0f0; text-align:center; }
+    th { background:#333; }
+    input, textarea, button { 
+      background:black; border:1px solid #0f0; color:#0f0; padding:8px; 
+      margin:4px 0; border-radius:4px; 
+    }
+    button:hover { background:#0f0; color:black; cursor:pointer; }
+    .text-danger { color:#f55; }
+  </style>
+</head>
+<body>
+  <h1>Merhaba @HttpContext.Session.GetString("User")!</h1>
+
+  <!-- Form Bölümü -->
+  <form method="post">
+    <input asp-for="Input.Id" type="hidden" />
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input asp-for="Input.ClassName" placeholder="Sınıf Adı" />
+    <span asp-validation-for="Input.ClassName" class="text-danger"></span><br/>
+
+    <!-- Burada type="text" ile HTML5 sayısal validasyonu kapatıyoruz -->
+    <input 
+        name="Input.StudentCount" 
+        type="text" 
+        value="@Model.Input.StudentCount" 
+        placeholder="Öğrenci Sayısı" />
+
+    <span asp-validation-for="Input.StudentCount" class="text-danger"></span><br/>
+
+    <textarea asp-for="Input.Description" placeholder="Açıklama"></textarea>
+    <span asp-validation-for="Input.Description" class="text-danger"></span><br/>
+
+    @if (Model.Input?.Id > 0)
+    {
+      <button type="submit" asp-page-handler="Edit">Güncelle</button>
+      <button type="submit" asp-page-handler="Clear">İptal</button>
+    }
+    else
+    {
+      <button type="submit" asp-page-handler="Add">Ekle</button>
+    }
+  </form>
+
+  <!-- Tablo Bölümü -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Sınıf Adı</th><th>Kişi Sayısı</th><th>Açıklama</th><th>İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+@foreach(var item in Model.ClassList)
+{
+  <tr>
+    <td>@item.Id</td>
+    <td>@item.ClassName</td>
+    <td>@item.StudentCount</td>
+    <td>@item.Description</td>
+    <td style="white-space:nowrap">
+      <!-- Düzenle: GET ile ?handler=Edit&id=... -->
+      <a
+        asp-page="./Index"
+        asp-page-handler="Edit"
+        asp-route-id="@item.Id"
+        style="background:black;border:1px solid #0f0;color:#0f0;padding:4px 8px;margin-right:4px;border-radius:4px;display:inline-block;text-decoration:none;"
+      >
+        Düzenle
+      </a>
+
+      <!-- Sil: POST ile id gönderiyor -->
+      <form method="post" style="display:inline">
+        <input type="hidden" name="id" value="@item.Id" />
+        <button
+          type="submit"
+          asp-page-handler="Delete"
+          style="background:black;border:1px solid #0f0;color:#0f0;padding:4px 8px;border-radius:4px;cursor:pointer;"
+        >
+          Sil
+        </button>
+      </form>
+    </td>
+  </tr>
+}
+</tbody>
+
+  </table>
+</body>
+</html>
