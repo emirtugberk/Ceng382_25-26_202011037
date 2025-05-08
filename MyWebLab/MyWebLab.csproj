@@ -1,7 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
+    <!-- Hedeflediğin .NET sürümü: net9.0 çıktıda SDK 9.0.202 var -->
     <TargetFramework>net9.0</TargetFramework>
-    
-    <UseAppHost>false</UseAppHost>
+
+    <!-- Nullable annotation uyarılarını kaldırmak için: -->
+    <Nullable>enable</Nullable>
+
+    <!-- ASP.NET Core’un global using’lerini otomatik eklemek için: -->
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 </Project>

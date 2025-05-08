@@ -1,0 +1,41 @@
+{
+    // Olası öznitelikler hakkında bilgi edinmek için IntelliSense kullanın.
+    // Mevcut özniteliklerin açıklamalarını görüntülemek için üzerine gelin.
+    // Daha fazla bilgi için şu adresi ziyaret edin: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [ 
+        
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome'u localhost'ta başlat",
+            "url": "http://localhost:5000",
+            "webRoot": "${workspaceFolder}"
+            
+        },
+
+        {
+            "name": "launchSettings.json: MyWebLab",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // .NET 9.0 için derlenen dll yolu:
+            "program": "${workspaceFolder}/MyWebLab/bin/Debug/net9.0/MyWebLab.dll",
+            "args": [],
+            // Çalışma dizini:
+            "cwd": "${workspaceFolder}/MyWebLab",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+              "action": "openExternally",
+              // Kestrel’in “Now listening on:” çıktısını yakala:
+              "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+              "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+              "/Views": "${workspaceFolder}/MyWebLab/Views"
+            }
+          }
+    ]
+}
