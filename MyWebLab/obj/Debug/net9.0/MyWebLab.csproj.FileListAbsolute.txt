@@ -96,3 +96,4 @@ C:\Users\Monster\Desktop\ceng382\Ceng382_25-26_202011037\MyWebLab\obj\Debug\net9
 C:\Users\Monster\Desktop\ceng382\Ceng382_25-26_202011037\MyWebLab\obj\Debug\net9.0\MyWebLab.pdb
 C:\Users\Monster\Desktop\ceng382\Ceng382_25-26_202011037\MyWebLab\obj\Debug\net9.0\MyWebLab.genruntimeconfig.cache
 C:\Users\Monster\Desktop\ceng382\Ceng382_25-26_202011037\MyWebLab\obj\Debug\net9.0\ref\MyWebLab.dll
+C:\Users\Monster\Desktop\ceng382\Ceng382_25-26_202011037\MyWebLab\bin\Debug\net9.0\Data\products.json

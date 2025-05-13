@@ -1,0 +1,51 @@
+[
+    {
+        "Id": 1,
+        "Name": "Laptop Pro",
+        "Price": 1200.00,
+        "Category": "Electronics",
+        "Description": "High-performance laptop suitable for professional work and multitasking."
+    },
+    {
+        "Id": 2,
+        "Name": "Wireless Mouse",
+        "Price": 25.50,
+        "Category": "Accessories",
+        "Description": "Ergonomic wireless optical mouse with USB receiver."
+    },
+    {
+        "Id": 3,
+        "Name": "Mechanical Keyboard",
+        "Price": 75.00,
+        "Category": "Accessories",
+        "Description": "Full-size mechanical keyboard with customizable RGB backlighting."
+    },
+    {
+        "Id": 4,
+        "Name": "4K Monitor",
+        "Price": 300.00,
+        "Category": "Electronics",
+        "Description": "27-inch IPS monitor with 4K Ultra HD resolution and thin bezels."
+    },
+    {
+        "Id": 5,
+        "Name": "Webcam HD",
+        "Price": 50.00,
+        "Category": "Accessories",
+        "Description": "1080p Full HD webcam with built-in microphone for video conferencing."
+    },
+    {
+        "Id": 6,
+        "Name": "Gaming PC",
+        "Price": 2100.00,
+        "Category": "Electronics",
+        "Description": "High-end pre-built gaming desktop with powerful CPU and dedicated graphics card."
+    },
+    {
+        "Id": 7,
+        "Name": "Laptop Stand",
+        "Price": 30.00,
+        "Category": "Accessories",
+        "Description": "Adjustable aluminum laptop stand to improve posture and cooling."
+    }
+]

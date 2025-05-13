@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyWebLab")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46940ca1b2b18eb199aed7d78c23c77350412eb7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be1422ad152f6417edd8d0b92d6c9d5a40eeeab4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyWebLab")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyWebLab")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
